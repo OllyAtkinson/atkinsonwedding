@@ -115,3 +115,32 @@
     
 })(jQuery);
 
+
+    // Wait for the DOM to be fully loaded
+    document.addEventListener("DOMContentLoaded", function () {
+        const attendingSelect = document.getElementById('attending-select');
+        const dietaryOptions = document.getElementById('dietary-options');
+        const menuExplanation = document.getElementById('menu-explanation');
+        const additionalInfo = document.getElementById('additional-info');
+
+        // Add an event listener to check when the value changes
+        attendingSelect.addEventListener('change', function () {
+            // If "Attending" is selected, show dietary options, menu explanation, and additional info
+            if (attendingSelect.value === 'attending') {
+                dietaryOptions.classList.remove('d-none');
+                menuExplanation.classList.remove('d-none');
+                additionalInfo.classList.remove('d-none');
+            } else {
+                dietaryOptions.classList.add('d-none');
+                menuExplanation.classList.add('d-none');
+                additionalInfo.classList.add('d-none');
+            }
+        });
+
+        // Initially check the state of the form
+        if (attendingSelect.value === 'attending') {
+            dietaryOptions.classList.remove('d-none');
+            menuExplanation.classList.remove('d-none');
+            additionalInfo.classList.remove('d-none');
+        }
+    });

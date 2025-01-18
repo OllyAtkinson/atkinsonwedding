@@ -633,75 +633,110 @@
     -- Friends & Family End -->
 
 
-    <!-- RSVP Start -->
-    <div class="container-fluid py-5" id="rsvp">
-        <div class="container py-5">
-            <div class="section-title position-relative text-center">
-                <h6 class="text-uppercase text-primary mb-3" style="letter-spacing: 3px;">RSVP</h6>
-                <h1 class="font-secondary display-4">Join Our Party</h1>
-                <i class="far fa-heart text-dark"></i>
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <div class="text-center">
-                        <form>
-                            <div class="form-row">
-                                <div class="form-group col-sm-6">
-                                    <input type="text" class="form-control bg-secondary border-0 py-4 px-3" placeholder="Your Name"/>
-                                </div>
-                                <div class="form-group col-sm-6">
-                                    <input type="email" class="form-control bg-secondary border-0 py-4 px-3" placeholder="Your Email"/>
-                                </div>
+<!-- RSVP Start -->
+<div class="container-fluid py-5" id="rsvp">
+    <div class="container py-5">
+        <div class="section-title position-relative text-center">
+            <h6 class="text-uppercase text-primary mb-3" style="letter-spacing: 3px;">RSVP</h6>
+            <h1 class="font-secondary display-4">Join Our Party</h1>
+            <i class="far fa-heart text-dark"></i>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="text-center">
+                    <form>
+                        <div class="form-row">
+                            <div class="form-group col-sm-6">
+                                <input type="text" class="form-control bg-secondary border-0 py-4 px-3" placeholder="Your Name" required />
                             </div>
-                            <div class="form-row">
+                            <div class="form-group col-sm-6">
+                                <input type="email" class="form-control bg-secondary border-0 py-4 px-3" placeholder="Your Email" required />
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <!-- Dropdown for Attending / Not Attending (Not Attending is the default) -->
+                            <div class="form-group col-sm-6">
+                                <select id="attending-select" class="form-control bg-secondary border-0" style="height: 52px;" required>
+                                    <option value="not-attending" selected>Not Attending</option>
+                                    <option value="attending">Attending</option>
+                                </select>
+                            </div>
+                        </div>
 
+                        <!-- Explanation Text for the Menu (Initially hidden) -->
+                        <div id="menu-explanation" class="text-center mt-4 d-none">
+                            <p>Please choose your preferred options for the wedding breakfast:</p>
+                            <ul>
+                                <li><strong>Starter:</strong> Choose your starter.</li>
+                                <li><strong>Main:</strong> Select your main course.</li>
+                                <li><strong>Afters:</strong> Pick a dessert option.</li>
+                            </ul>
+                        </div>
+
+                        <!-- Dietary options (Initially hidden) -->
+                        <div id="dietary-options" class="d-none">
+                            <div class="form-row">
+                                <!-- Starter -->
                                 <div class="form-group col-sm-6">
-                                    <select class="form-control bg-secondary border-0" style="height: 52px;">
-                                        <option>Attending</option>
-                                        <option>Not Attending</option>
+                                    <label for="starter-select">Starter</label>
+                                    <select id="starter-select" class="form-control bg-secondary border-0" style="height: 52px;" required>
+                                        <option value="">Select a Starter</option>
+                                        <option value="salmon">Salmon</option>
+                                        <option value="vegetable-soup">Vegetable Soup</option>
                                     </select>
                                 </div>
-                                    <div class="form-group col-sm-6">
-                                    <select class="form-control bg-secondary border-0" style="height: 52px;">
-                                        <option>Salmon</option>
-                                        <option>Vegetable Soup</option>
+                                <!-- Main -->
+                                <div class="form-group col-sm-6">
+                                    <label for="main-select">Main</label>
+                                    <select id="main-select" class="form-control bg-secondary border-0" style="height: 52px;" required>
+                                        <option value="">Select a Main</option>
+                                        <option value="steak">Steak</option>
+                                        <option value="gnocchi">Gnocchi</option>
                                     </select>
                                 </div>
+                                <!-- Afters -->
                                 <div class="form-group col-sm-6">
-                                    <select class="form-control bg-secondary border-0" style="height: 52px;">
-                                        <option>Steak</option>
-                                        <option>Gnocchi</option>
-                                    </select>
-                                </div>
-                                <div class="form-group col-sm-6">
-                                    <select class="form-control bg-secondary border-0" style="height: 52px;">
-                                        <option>Keele Mess</option>
-                                        <option>Sticky Toffee Pudding</option>
-                                    </select>
-                                </div>
-                                <div class="form-group col-sm-6">
-                                    <select class="form-control bg-secondary border-0" style="height: 52px;">
-                                        <option>No Dietary Requirements</option>
-                                        <option>Pescotarian</option>
-                                        <option>Vegetarian</option>
-                                        <option>Vegan</option>
-                                        <options>Allergy (please specify below)</options>
+                                    <label for="afters-select">Afters</label>
+                                    <select id="afters-select" class="form-control bg-secondary border-0" style="height: 52px;" required>
+                                        <option value="">Select a Dessert</option>
+                                        <option value="keele-mess">Keele Mess</option>
+                                        <option value="sticky-toffee-pudding">Sticky Toffee Pudding</option>
                                     </select>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <textarea class="form-control bg-secondary border-0 py-2 px-3" rows="5" placeholder="Additional Allergies/Requests" required="required"></textarea>
+                            <div class="form-row">
+                                <!-- Dietary Requirements -->
+                                <div class="form-group col-sm-6">
+                                    <label for="dietary-select">Dietary Requirements</label>
+                                    <select id="dietary-select" class="form-control bg-secondary border-0" style="height: 52px;" required>
+                                        <option value="">Select Dietary Requirement</option>
+                                        <option value="none">No Dietary Requirements</option>
+                                        <option value="pescatarian">Pescatarian</option>
+                                        <option value="vegetarian">Vegetarian</option>
+                                        <option value="vegan">Vegan</option>
+                                        <option value="allergy">Allergy (please specify below)</option>
+                                    </select>
+                                </div>
                             </div>
-                            <div>
-                                <button class="btn btn-primary font-weight-bold py-3 px-5" type="submit">Submit</button>
+                        </div>
+
+                        <!-- Allergies and Additional Info (Initially hidden) -->
+                        <div id="additional-info" class="d-none">
+                            <div class="form-group col-sm-12">
+                                <textarea class="form-control bg-secondary border-0 py-2 px-3" rows="5" placeholder="Additional Allergies/Requests"></textarea>
                             </div>
-                        </form>
-                    </div>
+                        </div>
+
+                        <div>
+                            <button class="btn btn-primary font-weight-bold py-3 px-5" type="submit">Submit</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
-    <!-- RSVP End -->
+</div>
+<!-- RSVP End -->
 
     <!-- Gifting -->
     <div class="container-fluid py-5" id="gifting">

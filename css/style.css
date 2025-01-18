@@ -59,7 +59,7 @@ body {
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
-  color: #1f5c3a;
+  color: #0f452e;
   text-align: left;
   background-color: #FFFFFF;
 }
@@ -1532,7 +1532,7 @@ pre code {
 .table {
   width: 100%;
   margin-bottom: 1rem;
-  color: #1f5c3a;
+  color: #0f452e;
 }
 
 .table th,
@@ -1582,7 +1582,7 @@ pre code {
 }
 
 .table-hover tbody tr:hover {
-  color: #1f5c3a;
+  color: #0f452e;
   background-color: rgba(0, 0, 0, 0.075);
 }
 
@@ -1969,7 +1969,7 @@ select.form-control:focus::-ms-value {
   margin-bottom: 0;
   font-size: 1rem;
   line-height: 1.5;
-  color: #1f5c3a;
+  color: #0f452e;
   background-color: transparent;
   border: solid transparent;
   border-width: 2px 0;
@@ -2321,7 +2321,7 @@ textarea.form-control {
 .btn {
   display: inline-block;
   font-weight: 400;
-  color: #1f5c3a;
+  color: #0f452e;
   text-align: center;
   vertical-align: middle;
   user-select: none;
@@ -2341,7 +2341,7 @@ textarea.form-control {
 }
 
 .btn:hover {
-  color: #1f5c3a;
+  color: #0f452e;
   text-decoration: none;
 }
 
@@ -3032,7 +3032,7 @@ input[type="button"].btn-block {
   padding: 0.5rem 0;
   margin: 0.125rem 0 0;
   font-size: 1rem;
-  color: #1f5c3a;
+  color: #0f452e;
   text-align: left;
   list-style: none;
   background-color: #fff;
@@ -5026,7 +5026,7 @@ a.badge-dark:focus, a.badge-dark.focus {
 }
 
 .list-group-item-action:active {
-  color: #1f5c3a;
+  color: #0f452e;
   background-color: #e9ecef;
 }
 
@@ -5829,7 +5829,7 @@ a.close.disabled {
 
 .popover-body {
   padding: 0.5rem 0.75rem;
-  color: #1f5c3a;
+  color: #0f452e;
 }
 
 .carousel {
@@ -6164,7 +6164,7 @@ button.bg-light:focus {
 }
 
 .bg-dark {
-  background-color: #1f5c3a !important;
+  background-color: #0f452e !important;
 }
 
 a.bg-dark:hover, a.bg-dark:focus,
@@ -9328,7 +9328,7 @@ a.text-dark:hover, a.text-dark:focus {
 }
 
 .text-body {
-  color: #1f5c3a !important;
+  color: #0f452e !important;
 }
 
 .text-muted {

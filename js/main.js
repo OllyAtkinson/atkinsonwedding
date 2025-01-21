@@ -115,8 +115,7 @@
     
 })(jQuery);
 
-
-//FormJS
+//Form
 document.addEventListener("DOMContentLoaded", function () {
     const form = document.getElementById("rsvp-form");
     const attendingSelect = document.getElementById("attending-select");

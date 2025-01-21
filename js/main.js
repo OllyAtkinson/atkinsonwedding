@@ -123,8 +123,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const menuExplanation = document.getElementById("menu-explanation");
     const additionalInfo = document.getElementById("additional-info");
 
-    // Replace with your deployed Web App URL
-    const scriptURL = "https://script.google.com/macros/s/AKfycbwqzLXm_5GTDpKP6rN_iN5hEplZmZ9IVRJM7PFx9taQUfYpHJzEmrjQ2LMexBOryySfrQ/exec"; 
+    const scriptURL = "https://script.google.com/macros/s/AKfycbwqzLXm_5GTDpKP6rN_iN5hEplZmZ9IVRJM7PFx9taQUfYpHJzEmrjQ2LMexBOryySfrQ/exec"; // Your web app URL
 
     // Show/Hide sections based on Attending selection
     attendingSelect.addEventListener("change", function () {
@@ -151,13 +150,10 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-        // Send data to Google Apps Script (ensure CORS headers are set on server)
+        // Send form data to Google Apps Script (ensure CORS headers are set on server)
         fetch(scriptURL, { 
             method: "POST", 
-            body: JSON.stringify(formObject),
-            headers: {
-                'Content-Type': 'application/json'
-            }
+            body: new URLSearchParams(formObject),
         })
         .then((response) => {
             alert("RSVP submitted successfully!");

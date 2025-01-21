@@ -115,62 +115,43 @@
     
 })(jQuery);
 
-//Form JS
-document.addEventListener("DOMContentLoaded", function () {
-    const form = document.forms["submit-to-google-sheet"];
-    const attendingSelect = document.getElementById("attending-select");
-    const dietaryOptions = document.getElementById("dietary-options");
-    const menuExplanation = document.getElementById("menu-explanation");
-    const additionalInfo = document.getElementById("additional-info");
-    const scriptURL = "https://script.google.com/macros/s/AKfycbwqzLXm_5GTDpKP6rN_iN5hEplZmZ9IVRJM7PFx9taQUfYpHJzEmrjQ2LMexBOryySfrQ/exec"; // Replace with your Apps Script deployment URL.
 
-    // Show/Hide sections based on Attending selection
-    attendingSelect.addEventListener("change", function () {
-        if (attendingSelect.value === "attending") {
-            dietaryOptions.classList.remove("d-none");
-            menuExplanation.classList.remove("d-none");
-            additionalInfo.classList.remove("d-none");
-        } else {
-            dietaryOptions.classList.add("d-none");
-            menuExplanation.classList.add("d-none");
-            additionalInfo.classList.add("d-none");
-        }
-    });
+//FormJS
+form.addEventListener("submit", (e) => {
+    e.preventDefault();
 
-    // Form submission
-    form.addEventListener("submit", (e) => {
-        e.preventDefault();
-        const formData = new FormData(form);
-        const formObject = Object.fromEntries(formData);
+    const formData = new FormData(form);
+    const formObject = Object.fromEntries(formData);
 
-        // Validation: Ensure all required fields are filled when attending.
-        if (
-            attendingSelect.value === "attending" &&
-            (!formObject.starter || !formObject.main || !formObject.afters || !formObject.dietary)
-        ) {
-            alert("Please fill in all the menu and dietary preference fields.");
-            return;
-        }
+    // Validation for required fields when attending.
+    if (
+        attendingSelect.value === "attending" &&
+        (!formObject.starter || !formObject.main || !formObject.afters || !formObject.dietary)
+    ) {
+        alert("Please fill in all the menu and dietary preference fields.");
+        return;
+    }
 
-        // Send data to Google Apps Script
-        fetch(scriptURL, { method: "POST", body: formData })
-            .then((response) => {
+    // Send data as JSON
+    fetch(scriptURL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formObject),
+    })
+        .then((response) => response.json())
+        .then((data) => {
+            if (data.result === "success") {
                 alert("RSVP submitted successfully!");
                 form.reset();
                 dietaryOptions.classList.add("d-none");
                 menuExplanation.classList.add("d-none");
                 additionalInfo.classList.add("d-none");
-            })
-            .catch((error) => {
-                console.error("Error submitting form:", error);
-                alert("There was an error submitting your RSVP. Please try again.");
-            });
-    });
-
-    // Initialize form state
-    if (attendingSelect.value !== "attending") {
-        dietaryOptions.classList.add("d-none");
-        menuExplanation.classList.add("d-none");
-        additionalInfo.classList.add("d-none");
-    }
+            } else {
+                alert("Error: " + data.error);
+            }
+        })
+        .catch((error) => {
+            console.error("Error submitting form:", error);
+            alert("There was an error submitting your RSVP. Please try again.");
+        });
 });

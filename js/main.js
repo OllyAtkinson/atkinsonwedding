@@ -116,65 +116,61 @@
 })(jQuery);
 
 //Form JS
-// Wait for the DOM to be fully loaded
 document.addEventListener("DOMContentLoaded", function () {
-    const form = document.getElementById("rsvp-form");
-    const attendingSelect = document.getElementById('attending-select');
-    const dietaryOptions = document.getElementById('dietary-options');
-    const menuExplanation = document.getElementById('menu-explanation');
-    const additionalInfo = document.getElementById('additional-info');
+    const form = document.forms["submit-to-google-sheet"];
+    const attendingSelect = document.getElementById("attending-select");
+    const dietaryOptions = document.getElementById("dietary-options");
+    const menuExplanation = document.getElementById("menu-explanation");
+    const additionalInfo = document.getElementById("additional-info");
+    const scriptURL = "https://script.google.com/macros/s/AKfycbwqzLXm_5GTDpKP6rN_iN5hEplZmZ9IVRJM7PFx9taQUfYpHJzEmrjQ2LMexBOryySfrQ/exec"; // Replace with your Apps Script deployment URL.
 
-    // Add an event listener to check when the value changes
-    attendingSelect.addEventListener('change', function () {
-        if (attendingSelect.value === 'attending') {
-            dietaryOptions.classList.remove('d-none');
-            menuExplanation.classList.remove('d-none');
-            additionalInfo.classList.remove('d-none');
+    // Show/Hide sections based on Attending selection
+    attendingSelect.addEventListener("change", function () {
+        if (attendingSelect.value === "attending") {
+            dietaryOptions.classList.remove("d-none");
+            menuExplanation.classList.remove("d-none");
+            additionalInfo.classList.remove("d-none");
         } else {
-            dietaryOptions.classList.add('d-none');
-            menuExplanation.classList.add('d-none');
-            additionalInfo.classList.add('d-none');
+            dietaryOptions.classList.add("d-none");
+            menuExplanation.classList.add("d-none");
+            additionalInfo.classList.add("d-none");
         }
     });
-
-    // Initially check the state of the form
-    if (attendingSelect.value === 'attending') {
-        dietaryOptions.classList.remove('d-none');
-        menuExplanation.classList.remove('d-none');
-        additionalInfo.classList.remove('d-none');
-    }
 
     // Form submission
-    form.addEventListener("submit", async function (event) {
-        event.preventDefault();
+    form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const formData = new FormData(form);
+        const formObject = Object.fromEntries(formData);
 
-        const formData = new FormData(event.target);
-        const data = {
-            name: formData.get("name"),
-            email: formData.get("email"),
-            attending: formData.get("attending"),
-            starter: formData.get("starter"),
-            main: formData.get("main"),
-            dessert: formData.get("dessert"),
-            dietary: formData.get("dietary"),
-            additional: formData.get("additional")
-        };
-
-        try {
-            const response = await fetch("https://script.google.com/macros/s/AKfycbwqzLXm_5GTDpKP6rN_iN5hEplZmZ9IVRJM7PFx9taQUfYpHJzEmrjQ2LMexBOryySfrQ/exec", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(data),
-            });
-
-            if (response.ok) {
-                alert("RSVP submitted successfully!");
-            } else {
-                alert("Error submitting RSVP. Please try again.");
-            }
-        } catch (error) {
-            console.error(error);
-            alert("An error occurred. Please try again.");
+        // Validation: Ensure all required fields are filled when attending.
+        if (
+            attendingSelect.value === "attending" &&
+            (!formObject.starter || !formObject.main || !formObject.afters || !formObject.dietary)
+        ) {
+            alert("Please fill in all the menu and dietary preference fields.");
+            return;
         }
+
+        // Send data to Google Apps Script
+        fetch(scriptURL, { method: "POST", body: formData })
+            .then((response) => {
+                alert("RSVP submitted successfully!");
+                form.reset();
+                dietaryOptions.classList.add("d-none");
+                menuExplanation.classList.add("d-none");
+                additionalInfo.classList.add("d-none");
+            })
+            .catch((error) => {
+                console.error("Error submitting form:", error);
+                alert("There was an error submitting your RSVP. Please try again.");
+            });
     });
+
+    // Initialize form state
+    if (attendingSelect.value !== "attending") {
+        dietaryOptions.classList.add("d-none");
+        menuExplanation.classList.add("d-none");
+        additionalInfo.classList.add("d-none");
+    }
 });

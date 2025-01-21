@@ -115,7 +115,7 @@
     
 })(jQuery);
 
-//Form
+/*Form
 document.addEventListener("DOMContentLoaded", function () {
     const form = document.getElementById("rsvp-form");
     const attendingSelect = document.getElementById("attending-select");
@@ -167,4 +167,5 @@ document.addEventListener("DOMContentLoaded", function () {
             alert("There was an error submitting your RSVP. Please try again.");
         });
     });
-});
+}); 
+*/

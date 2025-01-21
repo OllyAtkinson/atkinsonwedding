@@ -123,7 +123,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const dietaryOptions = document.getElementById("dietary-options");
     const menuExplanation = document.getElementById("menu-explanation");
     const additionalInfo = document.getElementById("additional-info");
-    const scriptURL = "https://script.google.com/macros/s/AKfycbwqzLXm_5GTDpKP6rN_iN5hEplZmZ9IVRJM7PFx9taQUfYpHJzEmrjQ2LMexBOryySfrQ/exec"; // Replace with your Apps Script deployment URL
+
+    // Replace with your deployed Web App URL
+    const scriptURL = "https://script.google.com/macros/s/AKfycbwqzLXm_5GTDpKP6rN_iN5hEplZmZ9IVRJM7PFx9taQUfYpHJzEmrjQ2LMexBOryySfrQ/exec"; 
 
     // Show/Hide sections based on Attending selection
     attendingSelect.addEventListener("change", function () {
@@ -150,25 +152,24 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-        // Send data to Google Apps Script
-        fetch(scriptURL, { method: "POST", body: formData })
-            .then((response) => {
-                alert("RSVP submitted successfully!");
-                form.reset();
-                dietaryOptions.classList.add("d-none");
-                menuExplanation.classList.add("d-none");
-                additionalInfo.classList.add("d-none");
-            })
-            .catch((error) => {
-                console.error("Error submitting form:", error);
-                alert("There was an error submitting your RSVP. Please try again.");
-            });
+        // Send data to Google Apps Script (ensure CORS headers are set on server)
+        fetch(scriptURL, { 
+            method: "POST", 
+            body: JSON.stringify(formObject),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then((response) => {
+            alert("RSVP submitted successfully!");
+            form.reset();
+            dietaryOptions.classList.add("d-none");
+            menuExplanation.classList.add("d-none");
+            additionalInfo.classList.add("d-none");
+        })
+        .catch((error) => {
+            console.error("Error submitting form:", error);
+            alert("There was an error submitting your RSVP. Please try again.");
+        });
     });
-
-    // Initialize form state
-    if (attendingSelect.value !== "attending") {
-        dietaryOptions.classList.add("d-none");
-        menuExplanation.classList.add("d-none");
-        additionalInfo.classList.add("d-none");
-    }
 });

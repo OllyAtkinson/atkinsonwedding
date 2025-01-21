@@ -639,92 +639,15 @@
         <div class="row justify-content-center">
             <div class="col-lg-8">
                 <div class="text-center">
-                    <form id="rsvp-form">
-                        <!-- Basic Info -->
-                        <div class="form-row">
-                            <div class="form-group col-sm-6">
-                                <input type="text" id="name" class="form-control bg-secondary border-0 py-4 px-3" placeholder="Your Name" required />
-                            </div>
-                            <div class="form-group col-sm-6">
-                                <input type="email" id="email" class="form-control bg-secondary border-0 py-4 px-3" placeholder="Your Email" required />
-                            </div>
-                        </div>
-
-                        <!-- Attendance Selection -->
-                        <div class="form-row">
-                            <div class="form-group col-sm-6">
-                                <select id="attending-select" class="form-control bg-secondary border-0" style="height: 52px;" required>
-                                    <option value="not-attending" selected>Not Attending</option>
-                                    <option value="attending">Attending</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <!-- Menu Explanation (Visible if attending) -->
-                        <div id="menu-explanation" class="text-center mt-4 d-none">
-                            <p>Please choose your preferred options for the wedding breakfast:</p>
-                            <ul>
-                                <li><strong>Starter:</strong> Choose your starter.</li>
-                                <li><strong>Main:</strong> Select your main course.</li>
-                                <li><strong>Afters:</strong> Pick a dessert option.</li>
-                            </ul>
-                        </div>
-
-                        <!-- Menu & Dietary Options (Visible if attending) -->
-                        <div id="dietary-options" class="d-none">
-                            <div class="form-row">
-                                <div class="form-group col-sm-6">
-                                    <label for="starter-select">Starter</label>
-                                    <select id="starter-select" class="form-control bg-secondary border-0" style="height: 52px;">
-                                        <option value="">Select a Starter</option>
-                                        <option value="salmon">Salmon</option>
-                                        <option value="vegetable-soup">Vegetable Soup</option>
-                                    </select>
-                                </div>
-                                <div class="form-group col-sm-6">
-                                    <label for="main-select">Main</label>
-                                    <select id="main-select" class="form-control bg-secondary border-0" style="height: 52px;">
-                                        <option value="">Select a Main</option>
-                                        <option value="steak">Steak</option>
-                                        <option value="gnocchi">Gnocchi</option>
-                                    </select>
-                                </div>
-                                <div class="form-group col-sm-6">
-                                    <label for="afters-select">Afters</label>
-                                    <select id="afters-select" class="form-control bg-secondary border-0" style="height: 52px;">
-                                        <option value="">Select a Dessert</option>
-                                        <option value="keele-mess">Keele Mess</option>
-                                        <option value="sticky-toffee-pudding">Sticky Toffee Pudding</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group col-sm-6">
-                                    <label for="dietary-select">Dietary Requirements</label>
-                                    <select id="dietary-select" class="form-control bg-secondary border-0" style="height: 52px;">
-                                        <option value="">Select Dietary Requirement</option>
-                                        <option value="none">No Dietary Requirements</option>
-                                        <option value="pescatarian">Pescatarian</option>
-                                        <option value="vegetarian">Vegetarian</option>
-                                        <option value="vegan">Vegan</option>
-                                        <option value="allergy">Allergy (please specify below)</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Allergy Request (Visible if Allergy selected) -->
-                        <div id="additional-info" class="d-none">
-                            <div class="form-group col-sm-12">
-                                <textarea id="additional-requests" class="form-control bg-secondary border-0 py-2 px-3" rows="5" placeholder="Additional Allergies/Requests"></textarea>
-                            </div>
-                        </div>
-
-                        <!-- Submit Button -->
-                        <div>
-                            <button class="btn btn-primary font-weight-bold py-3 px-5" type="submit">Submit</button>
-                        </div>
-                    </form>
+                    <!-- RSVP Form (Embedded Google Form) -->
+                    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScHWUTxHTlw-F2zsfzsc3MdbLgJhBuoUc5aPkVR763uzXaD6Q/viewform?embedded=true" 
+                            width="100%" 
+                            height="2180" 
+                            frameborder="0" 
+                            marginheight="0" 
+                            marginwidth="0">
+                        Loading…
+                    </iframe>
                 </div>
             </div>
         </div>

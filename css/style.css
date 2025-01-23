@@ -9923,3 +9923,22 @@ a.text-dark:hover, a.text-dark:focus {
 #timings .timeline::after {
     content: none !important;
 }
+
+
+
+
+/* Button */
+    #submit {
+      background-color: #0f452e;
+      font-family: 'Cormorant', serif;
+      color: white; /* Button text color */
+      padding: 10px 20px; /* Padding around the text */
+      border: none;
+      border-radius: 5px; /* Rounded corners */
+      font-size: 16px; /* Font size */
+      cursor: pointer; /* Pointer cursor on hover */
+      transition: background-color 0.3s ease; /* Smooth color transition */
+    }
+    #submit:hover {
+      background-color: #093a23; /* Darker shade on hover */
+    }

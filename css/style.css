@@ -9910,3 +9910,16 @@ a.text-dark:hover, a.text-dark:focus {
     max-width: 100%;
     height: auto;
 }
+
+
+/* Remove Bulma Styles for Timeline */
+#timings .timeline {
+    position: static !important;
+    border: none !important;
+    background: none !important;
+}
+
+#timings .timeline::before,
+#timings .timeline::after {
+    content: none !important;
+}

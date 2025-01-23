@@ -102,7 +102,7 @@
                         <div class="p-3" style="max-width: 900px;">
                             <h1 class="text-uppercase font-weight-semi text-white m-0" style="letter-spacing: 2px;">The Atkinson Wedding</h1>
                             <div class="d-inline-block border-top border-bottom border-light py-3 px-4">
-                                <h3 class="text-uppercase font-weight-normal text-white m-0" style="letter-spacing: 2px;">Saturday, 21<sup>st</sup> June 2025</h3>
+                                <h3 class="text-uppercase font-weight-normal text-white m-0" style="letter-spacing: 2px;">Saturday, 21 June 2025</h3>
                             </div>
                             <!--button type="button" class="btn-play mx-auto" data-toggle="modal"
                                 data-src="https://www.youtube.com/watch?v=Mq0zWDkV7fg" data-target="#videoModal">
@@ -455,14 +455,48 @@
 <div class="container-fluid py-5" id="rsvp" style="text-align: center; background-color: #ffffff;">
     <!-- Header Above the Form -->
     <div class="container text-center py-4">
-        <div class="section-title position-relative mb-4">
-            <h6 class="text-uppercase text-primary mb-2" style="letter-spacing: 3px;">RSVP</h6>
-            <h1 class="font-secondary display-4 mb-2">Join Our Party</h1>
-            <i class="far fa-heart text-dark"></i>
+        <div class="section-title position-relative text-center">
+            <h3 class="text-uppercase text-primary mb-3" style="letter-spacing: 3px;">RSVP</h3>
+            <i class="fas fa-glass-cheers text-dark"></i>
         </div>
     </div>
 
-    <!-- Form Section -->
+    <!-- Form Input -->
+    <section class="section">
+        <div class="container">
+            <div class="columns is-centered">
+                <div class="column is-two-thirds">
+                    <div id="entireForm">
+                        <form id="form">
+                            <div class="field">
+                                <label class="label">Look up your invitation:</label>
+                                <div class="control">
+                                    <input class="input" name="name" type="text" placeholder="Firstname Lastname">
+                                </div>
+                                <p class="help">Enter your first and last name exactly as it appears on your invitation. If there is more than one name, enter just one of them.</p>
+                            </div>
+                            <div class="field is-grouped is-grouped-centered">
+                                <div class="control">
+                                    <button id="submit" class="button is-link" type="submit">Continue</button>
+                                </div>
+                            </div>                            
+                            <div id="output"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="styled_rsvp.js"></script>
+
+
+
+
+
+
+
+
+    <!-- Form Section 
     <div class="form-container" style="width: 100%; margin: 0 auto; padding: 0; overflow: hidden;">
         <iframe 
             src="https://docs.google.com/forms/d/e/1FAIpQLScHWUTxHTlw-F2zsfzsc3MdbLgJhBuoUc5aPkVR763uzXaD6Q/viewform?embedded=true" 
@@ -476,7 +510,7 @@
         </iframe>
     </div>
 </div>
-<!-- RSVP End -->
+RSVP End -->
 
     <!-- Footer Start -->
     <div class="container-fluid bg-dark text-white py-5" id="gifting" style="margin-top: 90px;">

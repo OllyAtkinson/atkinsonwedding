@@ -3,7 +3,7 @@ document.getElementById('form').addEventListener('submit', function(event) {
     event.preventDefault();
     var name = this.elements.name.value;
     var xhr = new XMLHttpRequest();
-    xhr.open('GET', 'https://script.google.com/macros/s/AKfycbyQUo6fsmiplg-MF4_LNDF87-1XKAl01-zA-j0Lo892GhkWSrz_aAS2g-BAVOVRPlyRRg/exec' + name, true);
+    xhr.open('GET', 'https://script.google.com/macros/s/AKfycbxnKtDt5Vy1nxlInQkm9IBcdHHOJbBeQaLJiTWy7wY-6aB_lAPqqi1N4PwZ91hwfp9LeA/exec' + name, true);
     xhr.onreadystatechange = function() {
       if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
         document.getElementById('submit').classList.remove('is-loading');
@@ -77,7 +77,7 @@ function create_rsvpPage1(idAndNames){
 }
 
 function submitForm(data) {
-  const url = 'https://script.google.com/macros/s/AKfycbyQUo6fsmiplg-MF4_LNDF87-1XKAl01-zA-j0Lo892GhkWSrz_aAS2g-BAVOVRPlyRRg/exec';
+  const url = 'https://script.google.com/macros/s/AKfycbxnKtDt5Vy1nxlInQkm9IBcdHHOJbBeQaLJiTWy7wY-6aB_lAPqqi1N4PwZ91hwfp9LeA/exec';
   const xhr = new XMLHttpRequest();
   xhr.open('POST', url);
   xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');

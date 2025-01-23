@@ -3,7 +3,8 @@ document.getElementById('form').addEventListener('submit', function(event) {
     event.preventDefault();
     var name = this.elements.name.value;
     var xhr = new XMLHttpRequest();
-    xhr.open('GET', 'https://script.google.com/macros/s/AKfycbyQUo6fsmiplg-MF4_LNDF87-1XKAl01-zA-j0Lo892GhkWSrz_aAS2g-BAVOVRPlyRRg/exec' + name, true);
+    xhr.open('GET', 'https://script.google.com/macros/s/AKfycbyQUo6fsmiplg-MF4_LNDF87-1XKAl01-zA-j0Lo892GhkWSrz_aAS2g-BAVOVRPlyRRg/exec?name=' + encodeURIComponent(name), true);
+
     xhr.onreadystatechange = function() {
       if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
         document.getElementById('submit').classList.remove('is-loading');

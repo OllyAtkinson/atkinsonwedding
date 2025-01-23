@@ -32,8 +32,12 @@
   --breakpoint-md: 768px;
   --breakpoint-lg: 992px;
   --breakpoint-xl: 1200px;
-  --font-family-sans-serif: "Montserrat", sans-serif;
-  --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  /* Font Families */
+  --font-family-lucia: "Lucia", serif;
+  --font-family-cormorant: "Cormorant", serif;
+  --font-family-life-roman: "Life Roman", serif;
+  --font-family-life-italic: "Life Italic", serif;
+  --font-family-pinyon-script: "Pinyon Script", cursive;
 }
 
 *,
@@ -43,62 +47,82 @@
 }
 
 html {
-  font-family: sans-serif;
+  font-family: var(--font-family-lucia);
   line-height: 1.15;
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
-article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
-  display: block;
+Font Imports and Definitions
+@font-face {
+  font-family: "Lucia BT";
+  src: url("fonts/Lucia BT.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
 }
 
 body {
   margin: 0;
-  font-family: "Montserrat", sans-serif;
+  font-family: var(--font-family-cormorant); /* Default font for the body */
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
   color: #0f452e;
   text-align: left;
-  background-color: #FFFFFF;
-}
-
-[tabindex="-1"]:focus:not(:focus-visible) {
-  outline: 0 !important;
-}
-
-hr {
-  box-sizing: content-box;
-  height: 0;
-  overflow: visible;
+  background-color: var(--light);
 }
 
 h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-family-cormorant); /* Elegant font for headings */
+  font-weight: 600;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+h7 {
+  font-family: var(--font-family-lucia); /* Elegant font for headings */
+  font-weight: 600;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+h8 {
+  font-family: var(--font-family-pinyon-script); /* Elegant font for headings */
+  font-weight: 600;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+h2, h3, h4, h5, h6 {
+  font-family: var(--font-family-cormorant); /* Elegant font for headings */
+  font-weight: 600;
   margin-top: 0;
   margin-bottom: 0.5rem;
 }
 
 p {
+  font-family: var(--font-family-life-roman); /* Roman font for paragraphs */
   margin-top: 0;
   margin-bottom: 1rem;
 }
 
-abbr[title],
-abbr[data-original-title] {
+.italic-text {
+  font-family: var(--font-family-life-italic); /* Italic font for specific text */
+  font-style: italic;
+}
+
+a {
+  color: var(--primary);
+  text-decoration: none;
+  background-color: transparent;
+}
+
+a:hover {
+  color: #af5617;
   text-decoration: underline;
-  text-decoration: underline dotted;
-  cursor: help;
-  border-bottom: 0;
-  text-decoration-skip-ink: none;
 }
 
-address {
-  margin-bottom: 1rem;
-  font-style: normal;
-  line-height: inherit;
-}
-
+/* Lists */
 ol,
 ul,
 dl {
@@ -113,71 +137,38 @@ ul ol {
   margin-bottom: 0;
 }
 
-dt {
-  font-weight: 700;
-}
-
-dd {
-  margin-bottom: .5rem;
-  margin-left: 0;
-}
-
-blockquote {
-  margin: 0 0 1rem;
-}
-
-b,
-strong {
-  font-weight: bolder;
-}
-
+/* Small text */
 small {
   font-size: 80%;
 }
 
-sub,
-sup {
-  position: relative;
-  font-size: 75%;
-  line-height: 0;
-  vertical-align: baseline;
-}
-
-sub {
-  bottom: -.25em;
-}
-
-sup {
-  top: -.5em;
-}
-
-a {
-  color: #000000;
-  text-decoration: none;
-  background-color: transparent;
-}
-
-a:hover {
-  color: #af5617;
-  text-decoration: underline;
-}
-
-a:not([href]):not([class]) {
-  color: inherit;
-  text-decoration: none;
-}
-
-a:not([href]):not([class]):hover {
-  color: inherit;
-  text-decoration: none;
-}
-
+/* Preformatted text */
 pre,
 code,
 kbd,
 samp {
-  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-family: var(--font-family-life-roman); /* Roman font for pre/code */
   font-size: 1em;
+}
+
+/* Abbreviation styling */
+abbr[title],
+abbr[data-original-title] {
+  text-decoration: underline dotted;
+  cursor: help;
+}
+
+/* Address styling */
+address {
+  font-style: normal;
+  line-height: inherit;
+  margin-bottom: 1rem;
+}
+
+/* Blockquote */
+blockquote {
+  margin: 0 0 1rem;
+  font-family: var(--font-family-life-italic);
 }
 
 pre {
@@ -9763,53 +9754,50 @@ a.text-dark:hover, a.text-dark:focus {
   }
 }
 
-        <!-- Add Collage Styling -->
-        <style>
-            .image-container {
-                position: relative;
-                width: 100%;
-                aspect-ratio: 4 / 3; /* Ensures uniform dimensions */
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                background: #f7f7f7; /* Optional background for padding effect */
-                border-radius: 10px;
-                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-                overflow: hidden;
-            }
+/* Add Collage Styling */
+.image-container {
+    position: relative;
+    width: 100%;
+    height: 400px; /* Fixed height for portrait orientation */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f7f7f7; /* Optional background for padding effect */
+    overflow: hidden;
+}
 
-            .image-container img {
-                max-width: 100%;
-                max-height: 100%;
-                object-fit: contain; /* Ensures the full image is visible */
-            }
+.image-container img {
+    width: 100%; /* Ensure images take up full width of their container */
+    height: 100%; /* Ensure images take up full height of their container */
+    object-fit: cover; /* Maintain aspect ratio and crop if necessary */
+}
 
-            .row.m-0 {
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: space-between;
-            }
+/* Row settings */
+.row.m-0 {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0; /* No gap between images */
+    justify-content: space-between;
+}
 
-            .col-md-4 {
-                padding: 0;
-                margin-bottom: 20px;
-            }
+/* Each image container */
+.col-md-4 {
+    padding: 0;
+    margin-bottom: 0; /* No margin between columns */
+    flex: 1 1 calc(33.33%); /* Ensure 3 images per row */
+}
 
-            .text-center {
-                max-width: 800px;
-                margin: 0 auto;
-                font-size: 1.25rem;
-            }
+/* For small screens, stack images */
+@media (max-width: 575px) {
+    .col-md-4 {
+        flex: 1 1 100%; /* Stack images vertically on small screens */
+    }
+}
 
-            @media (max-width: 767px) {
-                .row.m-0 {
-                    justify-content: center;
-                }
-
-                .col-md-4 {
-                    margin-bottom: 15px;
-                }
-            }
+/* Ensure no gaps between images */
+.row.m-0 .col-md-4 .image-container {
+    margin: 0;
+}
 
 .map-container {
     position: relative;
@@ -9827,4 +9815,98 @@ a.text-dark:hover, a.text-dark:focus {
     left: 0;
     width: 100%;
     height: 100%;
+}
+
+
+/* Styling for Timings Section */
+#timings {
+    background-color: #f7f7f7;
+}
+
+.section-title h3 {
+    letter-spacing: 3px;
+    font-size: 2.5rem;
+}
+
+.timeline .row {
+    margin-bottom: 30px;
+}
+
+.timeline .col-12 {
+    margin-bottom: 15px;
+}
+
+.timeline h5 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.timeline p {
+    font-size: 1rem;
+    color: #6c757d;
+}
+
+/* Adjust for small screens */
+@media (max-width: 767px) {
+    .timeline .row {
+        text-align: center;
+    }
+}
+
+
+/* Styling for About Section */
+#about {
+    background-color: #f7f7f7;
+}
+
+#location {
+    background-color: #ffffff;
+}
+
+/* Accommodation Section Styling */
+#accommodation {
+    background-color: #f7f7f7; /* Off-grey background */
+}
+
+#accommodation .section-title h3 {
+    letter-spacing: 3px;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+#accommodation .text-center img {
+    max-width: 100%;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+#accommodation .font-weight-normal {
+    font-size: 1rem;
+    color: #6c757d;
+}
+
+#accommodation .font-weight-normal b {
+    font-size: 1.2rem;
+}
+
+#accommodation .btn-primary {
+    background-color: #0f452e; /* New button color */
+    border-color: #0f452e; /* New border color */
+    color: white;
+    font-size: 1rem;
+    padding: 0.5rem 1.5rem;
+    border-radius: 25px;
+    text-decoration: none;
+}
+
+#accommodation .btn-primary:hover {
+    background-color: #0d3a25; /* Slightly darker shade on hover */
+    border-color: #0d3a25;
+}
+
+/* For smaller images */
+#accommodation .img-fluid {
+    max-width: 100%;
+    height: auto;
 }

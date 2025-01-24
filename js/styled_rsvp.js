@@ -125,11 +125,11 @@ function create_rsvpPage1(idAndNames) {
             person.afters = document.getElementById(`afters-${person.id}`).value;
             person.dietReq = document.getElementById(`dietReq-${person.id}`).value;
         });
-        console.log(data)
         submitForm(data);
         document.getElementById('submit').disabled = true;
     });
 }
+
 
 function submitForm(data) {
     const url = 'https://script.google.com/macros/s/AKfycbyQUo6fsmiplg-MF4_LNDF87-1XKAl01-zA-j0Lo892GhkWSrz_aAS2g-BAVOVRPlyRRg/exec';
@@ -145,7 +145,10 @@ function submitForm(data) {
             document.getElementById('entireForm').innerHTML = `<div class="notification is-danger">An error occurred. Please try again later.</div>`;
         }
     };
-    xhr.send(JSON.stringify(data));
+    console.log(data)
+    //xhr.send(JSON.stringify(data)); //original
+    xhr.send(`data=${encodeURIComponent(JSON.stringify(data))}`);
+
 }
 
 

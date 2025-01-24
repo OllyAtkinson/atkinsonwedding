@@ -146,8 +146,8 @@ function submitForm(data) {
         }
     };
     console.log(data)
-    //xhr.send(JSON.stringify(data)); //original
-    xhr.send(`data=${encodeURIComponent(JSON.stringify(data))}`);
+    xhr.send(JSON.stringify(data)); //original
+    //xhr.send(`data=${encodeURIComponent(JSON.stringify(data))}`);
 
 }
 

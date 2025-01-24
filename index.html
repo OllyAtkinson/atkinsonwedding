@@ -450,9 +450,8 @@
 
 
 
-<!-- RSVP Start -->
+<!-- RSVP Form -->
 <div class="container-fluid py-5" id="rsvp" style="text-align: center; background-color: #ffffff;">
-    <!-- Header Above the Form -->
     <div class="container text-center py-4">
         <div class="section-title position-relative text-center">
             <h3 class="text-uppercase text-primary mb-3" style="letter-spacing: 3px;">RSVP</h3>
@@ -460,17 +459,17 @@
         </div>
     </div>
 
-    <!-- Form Input -->
     <section class="section">
         <div class="container">
             <div class="columns is-centered">
                 <div class="column is-two-thirds">
                     <div id="entireForm">
+                        <!-- Form for Name Lookup -->
                         <form id="form">
                             <div class="field">
                                 <label class="label">Look up your invitation:</label>
                                 <div class="control">
-                                    <input class="input" name="name" type="text" placeholder="Firstname Lastname">
+                                    <input class="input" name="name" type="text" placeholder="Firstname Lastname" required>
                                 </div>
                                 <p class="help">Enter your first and last name. If there is more than one name, enter just one of them.</p>
                             </div>
@@ -478,7 +477,7 @@
                                 <div class="control">
                                     <button id="submit" class="button is-link" type="submit">Continue</button>
                                 </div>
-                            </div>                            
+                            </div>
                             <div id="output"></div>
                         </form>
                     </div>
@@ -486,11 +485,7 @@
             </div>
         </div>
     </section>
-    <script src="js/styled_rsvp.js"></script>
-
-
-
-
+</div>
 
 
 

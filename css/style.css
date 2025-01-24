@@ -9942,3 +9942,29 @@ a.text-dark:hover, a.text-dark:focus {
     #submit:hover {
       background-color: #093a23; /* Darker shade on hover */
     }
+
+
+
+/* General adjustments for all section titles */
+.section-title h3 {
+    word-wrap: break-word;
+    white-space: normal;
+    overflow-wrap: break-word; /* Helps break long words */
+}
+
+/* Specific adjustment for mobile screens */
+@media (max-width: 576px) {
+    #accommodation .section-title h3 {
+        font-size: 1.5rem; /* Smaller font size for mobile */
+        letter-spacing: 1px; /* Reduced letter spacing */
+    }
+
+    #accommodation {
+        padding-left: 10px; /* Avoids potential overflow */
+        padding-right: 10px;
+    }
+
+    .container {
+        overflow-x: hidden; /* Prevents horizontal scrolling globally */
+    }
+}

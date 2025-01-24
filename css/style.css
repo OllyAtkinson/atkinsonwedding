@@ -9968,3 +9968,17 @@ a.text-dark:hover, a.text-dark:focus {
         overflow-x: hidden; /* Prevents horizontal scrolling globally */
     }
 }
+
+
+html, body {
+    overflow-x: hidden; /* Disable horizontal scrolling */
+}
+
+.container-fluid {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.input {
+    max-width: 100%; /* Prevent input field from overflowing */
+}

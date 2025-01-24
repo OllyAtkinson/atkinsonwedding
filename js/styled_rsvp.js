@@ -117,16 +117,29 @@ function create_rsvpPage1(idAndNames) {
     });
 
     document.getElementById('submit').addEventListener('click', () => {
-        document.getElementById('submit').classList.add('is-loading');
+        let valid = true; // Flag to track if everything is filled out
+
         data.forEach(person => {
             person.attending = document.getElementById(person.id).checked ? 1 : 0;
             person.starter = document.getElementById(`starter-${person.id}`).value;
             person.main = document.getElementById(`main-${person.id}`).value;
             person.afters = document.getElementById(`afters-${person.id}`).value;
             person.dietReq = document.getElementById(`dietReq-${person.id}`).value;
+
+            // Validation: Ensure starter, main, and afters are filled if attending is true
+            if (person.attending === 1 && (!person.starter || !person.main || !person.afters)) {
+                valid = false; // Set flag to false if any required field is missing
+            }
         });
-        submitForm(data);
-        document.getElementById('submit').disabled = true;
+
+        if (!valid) {
+            // Display an error message if not all required fields are filled
+            alert("Please fill out all required fields for attending guests (Starter, Main, Afters).");
+        } else {
+            document.getElementById('submit').classList.add('is-loading');
+            submitForm(data);
+            document.getElementById('submit').disabled = true;
+        }
     });
 }
 

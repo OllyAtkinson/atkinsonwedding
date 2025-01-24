@@ -125,24 +125,27 @@ function create_rsvpPage1(idAndNames) {
             person.afters = document.getElementById(`afters-${person.id}`).value;
             person.dietReq = document.getElementById(`dietReq-${person.id}`).value;
         });
-        console.log(data);
+        console.log(data)
         submitForm(data);
         document.getElementById('submit').disabled = true;
     });
 }
 
 function submitForm(data) {
-  google.script.run
-    .withSuccessHandler(function (response) {
-      if (response === "Success") {
-        document.getElementById("entireForm").innerHTML = `<div class="notification is-success">Thank you! Your RSVP has been submitted successfully.</div>`;
-      } else {
-        document.getElementById("entireForm").innerHTML = `<div class="notification is-danger">An error occurred. Please try again later.</div>`;
-      }
-    })
-    .withFailureHandler(function () {
-      document.getElementById("entireForm").innerHTML = `<div class="notification is-danger">An error occurred. Please try again later.</div>`;
-    })
-    .submitRSVP(data); // Calls the Apps Script function
+    const url = 'https://script.google.com/macros/s/AKfycbyQUo6fsmiplg-MF4_LNDF87-1XKAl01-zA-j0Lo892GhkWSrz_aAS2g-BAVOVRPlyRRg/exec';
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', url);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.onload = function () {
+        if (xhr.status === 200 && xhr.responseText === 'Success') {
+            document.getElementById('submit').classList.remove('is-loading');
+            document.getElementById('entireForm').innerHTML = `<div class="notification is-success">Thank you! Your RSVP has been submitted successfully.</div>`;
+        } else {
+            document.getElementById('submit').classList.remove('is-loading');
+            document.getElementById('entireForm').innerHTML = `<div class="notification is-danger">An error occurred. Please try again later.</div>`;
+        }
+    };
+    xhr.send(JSON.stringify(data));
 }
+
 

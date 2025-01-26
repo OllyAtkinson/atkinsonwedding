@@ -9842,11 +9842,6 @@ a.text-dark:hover, a.text-dark:focus {
     margin-bottom: 10px;
 }
 
-.timeline p {
-    font-size: 1rem;
-    color: #6c757d;
-}
-
 /* Adjust for small screens */
 @media (max-width: 767px) {
     .timeline .row {
